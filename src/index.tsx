@@ -1,15 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+import { ThemeProvider } from 'styled-components';
+
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store';
+import Theme from './assets/theme';
+import Root from './Root';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-    <App />
-    </Provider>
+    <ThemeProvider theme={Theme}>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Root />
+        </BrowserRouter>
+      </Provider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
