@@ -1,16 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
+import {firstLetterUpperCase} from "../../../../utils/formatting";
 
-const Filters = () => {
+interface FiltersProps {
+  options: string[];
+  action: (value: string) => void
+}
+
+const Filters: React.FC<FiltersProps> = ({action, options}) => {
+
+  const onChangeAction = (value: React.FormEvent<HTMLSelectElement>) => {
+    action(value.currentTarget.value)
+  }
+
   return (
     <Container>
-      <Select>
+      <Select onChange={onChangeAction}>
         <option value="all">Tutte le categorie</option>
-        <option value="react">React</option>
-        <option value="redux">Redux</option>
-        <option value="angular">Angular</option>
-        <option value="ngrx">NgRx</option>
-        <option value="rxjs">RxJS</option>
+          { options.map((option) => {
+            return <option key={option} value={option}>{firstLetterUpperCase(option)}</option>
+          })}
       </Select>
     </Container>
   );

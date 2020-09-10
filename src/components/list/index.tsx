@@ -6,13 +6,14 @@ import Filters from './layout/filters';
 import ListItems from './layout/listItems';
 
 const List = () => {
+
   return (
     <Container>
       <Header>
         <Profile />
         <AddArticle />
       </Header>
-      <Filters />
+      <Filters action={console.log} options={['pippo','pluto']}/>
       <ListItems />
     </Container>
   );
