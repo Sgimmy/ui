@@ -7,7 +7,7 @@ const Root = () => {
   return (
     <Container>
       <Route path="/" component={List} />
-      {/*<Route path="/article/:id" component={Reader}*/}
+      {/*<Route path="/listItem/:id" component={Reader}*/}
     </Container>
   );
 }
