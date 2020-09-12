@@ -23,7 +23,6 @@ const List = (): React.FC => {
           name={name}
           notReadedCounter={notReadedCounter}
         />
-
         <AddArticle />
       </Header>
       <Filters action={console.log} options={['pippo', 'pluto']} />

@@ -34,6 +34,18 @@ const Profile: React.FC<ProfileProps> = ({
           </Text>
         </Fragment>
       )}
+      {loading ? (
+        <div>loader</div>
+      ) : (
+        <Fragment>
+          <ImageContainer>
+            <Image src={avatar} alt="This is your avatar" />
+          </ImageContainer>
+          <Text>
+            Ciao {name}, {sentence}
+          </Text>
+        </Fragment>
+      )}
     </Container>
   );
 };
