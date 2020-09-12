@@ -9,7 +9,7 @@ import { notReadedCounterSelector, profileSelector } from "../../store/selectors
 
 const List = () => {
 
-  const {name, surname, avatar, loading} = useSelector(profileSelector);
+  const {name, avatar, loading} = useSelector(profileSelector);
   const notReadedCounter = useSelector(notReadedCounterSelector);
 
   return (
