@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {firstLetterUpperCase} from "../../../../utils/formatting";
+import { firstLetterUpperCase } from "../../../../utils/formatting";
 
 interface FiltersProps {
   options: string[];
@@ -10,16 +10,18 @@ interface FiltersProps {
 const Filters: React.FC<FiltersProps> = ({action, options}) => {
 
   const onChangeAction = (value: React.FormEvent<HTMLSelectElement>) => {
-    action(value.currentTarget.value)
-  }
+    action(value.currentTarget.value);
+  };
 
   return (
     <Container>
       <Select onChange={onChangeAction}>
         <option value="all">Tutte le categorie</option>
-          { options.map((option) => {
-            return <option key={option} value={option}>{firstLetterUpperCase(option)}</option>
-          })}
+        {
+          options.map((option) => {
+            return <option key={option} value={option}>{firstLetterUpperCase(option)}</option>;
+          })
+        }
       </Select>
     </Container>
   );

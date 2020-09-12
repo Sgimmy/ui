@@ -1,16 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Profile = () => {
+interface ProfileProps {
+  name: string;
+  avatar: string;
+  notReadedCounter: number;
+}
+
+const Profile: React.FC<ProfileProps> = ({ name, avatar, notReadedCounter }) => {
+  const sentence = notReadedCounter === 0
+    ? 'non ci sono articoli da leggere'
+    : notReadedCounter === 1
+      ? `hai un solo articolo da leggere`
+      : `hai ${notReadedCounter} da leggere`;
   return (
     <Container>
       <ImageContainer>
         <Image
-          src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/00/0077323c71c812138270223504eed8cccdad41b2_full.jpg"
+          src={avatar}
           alt="This is your avatar" />
       </ImageContainer>
       <Text>
-        Ciao Teddy, hai 5 articoli da leggere
+        Ciao {name}, {sentence}
       </Text>
     </Container>
   );
