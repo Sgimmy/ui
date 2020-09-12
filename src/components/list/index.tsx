@@ -4,25 +4,23 @@ import AddArticle from './layout/addArticle';
 import Profile from './layout/profile';
 import Filters from './layout/filters';
 import ListItems from './layout/listItems';
-import {useSelector} from "react-redux";
-import {notReadedCounterSelector, profileSelector} from "../../store/selectors/profile.selector";
+import { useSelector } from "react-redux";
+import { notReadedCounterSelector, profileSelector } from "../../store/selectors/profile.selector";
 
 const List = () => {
 
-  const { name, surname, avatar, loading } = useSelector(profileSelector);
+  const {name, surname, avatar, loading} = useSelector(profileSelector);
   const notReadedCounter = useSelector(notReadedCounterSelector);
 
   return (
     <Container>
       <Header>
-
-          <Profile
-            loading={loading}
-            avatar={avatar}
-            name={name}
-            notReadedCounter={notReadedCounter}
-          />
-
+        <Profile
+          loading={loading}
+          avatar={avatar}
+          name={name}
+          notReadedCounter={notReadedCounter}
+        />
         <AddArticle/>
       </Header>
       <Filters action={console.log} options={['pippo', 'pluto']}/>
