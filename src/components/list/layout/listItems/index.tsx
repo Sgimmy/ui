@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ListItem from '../listItem';
 
-const ListItems = () => {
+const ListItems = (): React.FC => {
   return (
     <Container>
       <ListItem />

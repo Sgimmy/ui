@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ListItem = () => {
+const ListItem = (): React.FC => {
   return (
     <Container>
       <Article>
@@ -47,14 +47,8 @@ const Article = styled.article`
   margin-bottom: 20px;
 `;
 
-const Header = styled.header`
+const Header = styled.header``;
 
-`;
+const Main = styled.main``;
 
-const Main = styled.main`
-
-`;
-
-const Footer = styled.footer`
-
-`;
+const Footer = styled.footer``;

@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { firstLetterUpperCase } from "../../../../utils/formatting";
+import { firstLetterUpperCase } from '../../../../utils/formatting';
 
 interface FiltersProps {
   options: string[];
-  action: (value: string) => void
+  action: (value: string) => void;
 }
 
-const Filters: React.FC<FiltersProps> = ({action, options}) => {
-
+const Filters: React.FC<FiltersProps> = ({ action, options }) => {
   const onChangeAction = (value: React.FormEvent<HTMLSelectElement>) => {
     action(value.currentTarget.value);
   };
@@ -17,11 +16,13 @@ const Filters: React.FC<FiltersProps> = ({action, options}) => {
     <Container>
       <Select onChange={onChangeAction}>
         <option value="all">Tutte le categorie</option>
-        {
-          options.map((option) => {
-            return <option key={option} value={option}>{firstLetterUpperCase(option)}</option>;
-          })
-        }
+        {options.map(option => {
+          return (
+            <option key={option} value={option}>
+              {firstLetterUpperCase(option)}
+            </option>
+          );
+        })}
       </Select>
     </Container>
   );

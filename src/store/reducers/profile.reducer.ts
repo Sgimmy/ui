@@ -1,10 +1,10 @@
-import {createReducer} from "@reduxjs/toolkit";
-import {XHRRequest} from "./common";
+import { createReducer } from '@reduxjs/toolkit';
+import { XHRRequest } from './common';
 import {
   profileErrorAction,
   retrieveProfileAction,
   storeProfileAction,
-} from "../actions/profile.action";
+} from '../actions/profile.action';
 
 export interface Profile extends XHRRequest {
   name?: string;
@@ -26,24 +26,25 @@ const defaultState: Profile = {
   name: 'Mario',
   surname: 'Pacella',
   notReadedCounter: 5,
-  avatar: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/00/0077323c71c812138270223504eed8cccdad41b2_full.jpg',
+  avatar:
+    'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/00/0077323c71c812138270223504eed8cccdad41b2_full.jpg',
   errorMessage: undefined,
-  loading: false
-}
+  loading: false,
+};
 
 const profileReducer = createReducer<Profile>(defaultState, {
-  [retrieveProfileAction.type]: (state) => ({
+  [retrieveProfileAction.type]: state => ({
     ...state,
     loading: true,
   }),
   [storeProfileAction.type]: (state, action) => ({
     ...state,
     loading: false,
-    ...action.payload
+    ...action.payload,
   }),
   [profileErrorAction.type]: (state, action) => ({
     ...state,
-    errorMessage: action.payload
+    errorMessage: action.payload,
   }),
 });
 
