@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 
 interface ProfileProps {
@@ -16,19 +16,21 @@ const Profile: React.FC<ProfileProps> = ({loading, name, avatar, notReadedCounte
       : `hai ${notReadedCounter} articoli da leggere`;
   return (
     <Container>
-      {loading ?
-        <div>loader</div>
-        :
-        <Fragment>
-          <ImageContainer>
-            <Image
-              src={avatar}
-              alt="This is your avatar"/>
-          </ImageContainer>
-          <Text>
-            Ciao {name}, {sentence}
-          </Text>
-        </Fragment>
+      {
+        loading
+          ?
+          <div>loader</div>
+          :
+          <Fragment>
+            <ImageContainer>
+              <Image
+                src={avatar}
+                alt="This is your avatar"/>
+            </ImageContainer>
+            <Text>
+              Ciao {name}, {sentence}
+            </Text>
+          </Fragment>
       }
     </Container>
   );
