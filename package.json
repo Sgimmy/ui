@@ -46,7 +46,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn test:lint && yarn test:lint --fix"
+      "pre-commit": "yarn test:lint && yarn test:lint"
     }
   },
   "browserslist": {
