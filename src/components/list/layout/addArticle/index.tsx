@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const AddArticle = (): React.FC => {
+const AddArticle: React.FC = () => {
   return (
     <Container>
       <Add>&#43;</Add>

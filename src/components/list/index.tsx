@@ -10,7 +10,7 @@ import {
   profileSelector,
 } from '../../store/selectors/profile.selector';
 
-const List = (): React.FC => {
+const List: React.FC = () => {
   const { name, avatar, loading } = useSelector(profileSelector);
   const notReadedCounter = useSelector(notReadedCounterSelector);
 

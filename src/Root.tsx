@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Route } from 'react-router-dom';
 import List from './components/list';
 
-const Root = (): React.FC => {
+const Root: React.FC = () => {
   return (
     <Container>
       <Route path="/" component={List} />
