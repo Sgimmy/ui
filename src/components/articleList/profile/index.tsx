@@ -34,18 +34,6 @@ const Profile: React.FC<ProfileProps> = ({
           </Text>
         </Fragment>
       )}
-      {loading ? (
-        <div>loader</div>
-      ) : (
-        <Fragment>
-          <ImageContainer>
-            <Image src={avatar} alt="This is your avatar" />
-          </ImageContainer>
-          <Text>
-            Ciao {name}, {sentence}
-          </Text>
-        </Fragment>
-      )}
     </Container>
   );
 };
@@ -65,6 +53,7 @@ const Container = styled.div`
 
 const ImageContainer = styled.div`
   max-width: 70px;
+  border-radius: 35px;
 `;
 
 const Image = styled.img`

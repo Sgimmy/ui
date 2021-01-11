@@ -1,13 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Route } from 'react-router-dom';
-import List from './components/list';
+import ListView from './view/ListView';
+import Header from './components/Header';
+import { RouteLink } from './constants/route';
+import ArticleDetailView from './view/ArticleDetailView';
+import './reset.css';
 
 const Root: React.FC = () => {
   return (
     <Container>
-      <Route path="/" component={List} />
-      {/*<Route path="/listItem/:id" component={Reader}*/}
+      <Header />
+      <Route path={RouteLink.listArticle} component={ListView} exact />
+      <Route
+        path={RouteLink.articleDetail}
+        component={ArticleDetailView}
+        exact
+      />
     </Container>
   );
 };

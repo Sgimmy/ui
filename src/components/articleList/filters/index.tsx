@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { firstLetterUpperCase } from '../../../../utils/formatting';
+import { firstLetterUpperCase } from '../../../utils/formatting';
 
 interface FiltersProps {
   options: string[];

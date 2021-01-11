@@ -1,29 +1,47 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
-const ListItem: React.FC = () => {
+interface ListItem {
+  title: string;
+  description?: string;
+  tags: string[];
+  id: number;
+}
+
+const ArticleListItem: React.FC<ListItem> = ({
+  title,
+  description = 'Anteprima non disponibile',
+  tags,
+  id,
+}) => {
+  const history = useHistory();
+  const navigateToArticle = () => history.push(`/listItem/${id}`);
+
   return (
     <Container>
-      <Article>
+      <Article onClick={navigateToArticle}>
         <Header>
-          <h3>Titolo dell'articolo</h3>
+          <h3>{title}</h3>
         </Header>
         <Main>
-          <p>Estratto dell'articolo</p>
+          <p>{description}</p>
         </Main>
         <Footer>
-          <ul>
-            <li>Categoria 1</li>
-            <li>Categoria 2</li>
-            <li>Categoria 3</li>
-          </ul>
+          {!!tags && (
+            <ul>
+              {tags.map(tag => (
+                <li key={tag}>{tag}</li>
+              ))}
+            </ul>
+          )}
         </Footer>
       </Article>
     </Container>
   );
 };
 
-export default ListItem;
+export default ArticleListItem;
 
 const Container = styled.div`
   display: flex;
