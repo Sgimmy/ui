@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@types/http-proxy": "^1.17.4",
+    "axios": "^0.21.1",
     "eslint": "^6.6.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",

@@ -7,10 +7,12 @@ import {
   notReadedCounterSelector,
   profileSelector,
 } from '../../store/selectors/profile.selector';
+import { useUserActions } from '../hooks/userActions';
 
 const Header: React.FC = () => {
   const { name, avatar, loading } = useSelector(profileSelector);
   const notReadedCounter = useSelector(notReadedCounterSelector);
+  const { openModalAddArticle } = useSelector(useUserActions);
 
   return (
     <Container>
@@ -20,7 +22,7 @@ const Header: React.FC = () => {
         name={name}
         notReadedCounter={notReadedCounter}
       />
-      <AddArticle />
+      <AddArticle clickAddButton={openModalAddArticle} />
     </Container>
   );
 };

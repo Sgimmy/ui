@@ -14,3 +14,10 @@ export interface CallApiResponse<T> {
   data: T;
   error?: string;
 }
+
+export interface SendArticle {
+  title?: string;
+  description?: string;
+  source: string;
+  tags: string[];
+}

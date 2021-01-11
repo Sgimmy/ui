@@ -1,6 +1,9 @@
 export enum Actions {
   //user action
   userPressedRetry = 'USER_PRESSED_RETRY',
+  userPressedModalOpenAddArticleAction = 'USER_PRESSED_MODAL_OPEN_ADD_ARTICLE',
+  userPressedModalCloseAddArticleAction = 'USER_PRESSED_MODAL_OPEN_ADD_ARTICLE',
+  userPressedSendArticleAction = 'USER_PRESSED_SEND_ARTICLE',
 
   storeProfile = 'STORE_PROFILE',
   storeProfileFailed = 'STORE_PROFILE_FAILED',

@@ -1,16 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
-import { userPressedRetryAction } from '../../../store/actions/user.action';
 
-const AddArticle: React.FC = () => {
-  const dispatch = useDispatch();
-  const click = () => {
-    dispatch(userPressedRetryAction());
-  };
+interface AddArticleProps {
+  clickAddButton: () => void;
+}
 
+const AddArticle: React.FC<AddArticleProps> = ({ clickAddButton }) => {
   return (
-    <Container onClick={click}>
+    <Container onClick={clickAddButton}>
       <Add>&#43;</Add>
     </Container>
   );

@@ -50,14 +50,6 @@ export const articleListSlice = createSlice({
         loading: false,
       };
     },
-    [userPressedRetryAction.type]: () => {
-      getArticleList();
-      return {
-        loading: true,
-        error: undefined,
-        data: [],
-      };
-    },
   },
 });
 
