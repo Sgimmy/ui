@@ -6,6 +6,7 @@ import Header from './components/Header';
 import { RouteLink } from './constants/route';
 import ArticleDetailView from './view/ArticleDetailView';
 import './reset.css';
+import NewArticleView from './view/NewArticleView';
 
 const Root: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const Root: React.FC = () => {
         component={ArticleDetailView}
         exact
       />
+      <Route path={RouteLink.newArticle} component={NewArticleView} exact />
     </Container>
   );
 };
@@ -28,4 +30,5 @@ const Container = styled.div`
   background-color: ${props => props.theme.colors.background.black};
   color: ${props => props.theme.colors.text.white};
   font-family: ${props => props.theme.fontFamily};
+  height: calc(100vh - 40px);
 `;

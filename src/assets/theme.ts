@@ -8,8 +8,12 @@ const Theme = {
     background: {
       black: '#1a1d1e',
     },
-    borders: '#3c3c3c',
+    borders: {
+      grey: '#3c3c3c',
+      white: '#fcf2ff',
+    },
   },
   fontFamily: 'Quicksand',
 };
+
 export default Theme;

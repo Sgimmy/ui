@@ -20,7 +20,7 @@ const Container = styled.div`
   width: 80px;
   height: 80px;
   border-radius: 4px;
-  border: 1px solid ${props => props.theme.colors.borders};
+  border: 1px solid ${props => props.theme.colors.borders.grey};
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -28,7 +28,8 @@ const Container = styled.div`
 `;
 
 const Add = styled.p`
-  margin-top: -5px;
+  margin: auto;
   font-size: 50px;
   text-align: center;
+  height: 58px;
 `;

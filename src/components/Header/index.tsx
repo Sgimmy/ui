@@ -7,12 +7,15 @@ import {
   notReadedCounterSelector,
   profileSelector,
 } from '../../store/selectors/profile.selector';
-import { useUserActions } from '../hooks/userActions';
+import { useHistory } from 'react-router-dom';
+import { RouteLink } from '../../constants/route';
 
 const Header: React.FC = () => {
+  const history = useHistory();
+
   const { name, avatar, loading } = useSelector(profileSelector);
   const notReadedCounter = useSelector(notReadedCounterSelector);
-  const { openModalAddArticle } = useSelector(useUserActions);
+  const openModalAddArticle = () => history.push(RouteLink.newArticle);
 
   return (
     <Container>
@@ -35,4 +38,6 @@ const Container = styled.div`
   align-content: center;
   align-items: center;
   justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid ${props => props.theme.colors.borders.white};
 `;

@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { replaceNull } from '../utils/formatting';
 import { Article, CallApiResponse } from '../constants/types';
-import { userPressedRetryAction } from '../store/actions/user.action';
 
 export type GetArticleListState = CallApiResponse<Article[]>;
 

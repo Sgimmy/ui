@@ -21,3 +21,10 @@ export interface SendArticle {
   source: string;
   tags: string[];
 }
+
+export interface ChangeFormAddArticle {
+  title?: string;
+  description?: string;
+  source?: string;
+  tags?: string[];
+}

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ArticleListItem from '../articleListItem';
 import { Article } from '../../../constants/types';
 import ArticleListItemLoader from '../ArticleListItemLoader';
+import { P } from '../../ui/Typography';
 
 interface ArticleList {
   articlesList: Article[];
@@ -22,16 +23,10 @@ const ArticleListItems: React.FC<ArticleList> = ({ articlesList, loading }) => {
     <Container>
       {articlesList ? (
         articlesList.map(article => (
-          <ArticleListItem
-            key={article.id}
-            title={article.title}
-            description={article.description}
-            tags={['prova1', 'prova2']}
-            id={article.id}
-          />
+          <ArticleListItem article={article} tags={['prova1', 'prova2']} />
         ))
       ) : (
-        <p>Lista vuota</p>
+        <P>Lista vuota</P>
       )}
     </Container>
   );

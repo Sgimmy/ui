@@ -33,7 +33,7 @@ export default Filters;
 const Container = styled.div`
   margin-top: 20px;
   border-radius: 8px;
-  border: 1px solid ${props => props.theme.colors.borders};
+  border: 1px solid ${props => props.theme.colors.borders.grey};
   overflow: hidden;
 `;
 
