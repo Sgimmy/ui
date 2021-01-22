@@ -5,7 +5,7 @@ import { useGetArticleList } from '../components/hooks/useGetArticleList';
 import { getArticleList } from '../api/getArticleList';
 import { useDispatch } from 'react-redux';
 import { clearStoreArticleDetailAction } from '../store/actions/articleDetail.action';
-import ViewAnimation from '../components/ui/animation/viewAnimation';
+import ViewAnimation from '../components/ui/animation/ViewAnimation';
 
 const ListView: React.FC = () => {
   const dispatch = useDispatch();

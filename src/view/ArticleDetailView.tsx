@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { getArticle } from '../api/getArticle';
 import { useGetArticle } from '../components/hooks/useGetArticle';
 import { Loader } from '../components/ui/Loader';
-import ViewAnimation from '../components/ui/animation/viewAnimation';
+import ViewAnimation from '../components/ui/animation/ViewAnimation';
 
 interface TParams {
   id?: string;

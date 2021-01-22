@@ -50,7 +50,6 @@ export default Root;
 
 const Container = styled.div`
   padding: 0px 20px 20px;
-  background-color: ${props => props.theme.colors.background.black};
   color: ${props => props.theme.colors.text.white};
   font-family: ${props => props.theme.fontFamily};
 `;
