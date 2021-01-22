@@ -15,6 +15,10 @@ export interface CallApiResponse<T> {
   error?: string;
 }
 
+export interface CallApiResponseSendArticle<T> extends CallApiResponse<T> {
+  clearForm?: boolean;
+}
+
 export interface SendArticle {
   title?: string;
   description?: string;

@@ -1,43 +1,63 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import Tag from './partials/tag';
+import { ErrorMessage } from '../Typography';
 
-const InputTags: React.FC = () => {
+interface TagsProps {
+  tags: string[];
+  setTags: (tags: string[]) => void;
+  errorMessage?: string;
+}
+
+const InputTags: React.FC<TagsProps> = ({
+  setTags,
+  tags = [],
+  errorMessage,
+}) => {
   const [value, setValue] = useState<string>('');
-  const [tags, setTags] = useState<string[]>([]);
 
   const addTag = () => {
-    const tag = value.split('');
+    const tag = value.replace(',', ' ').split(' ');
     setValue('');
-    setTags([...tags, ...tag]);
+    setTags(Array.from(new Set(tags.concat(tag))));
   };
 
   const enterAddTag = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    console.log(e);
     if (e.key === 'Enter') {
       addTag();
     }
+  };
+
+  const deleteTag = (tag: string) => {
+    const newTags = tags.filter(el => el !== tag);
+    setTags(newTags);
   };
 
   return (
     <Container>
       <ContainerInput>
         <InputStyled
-          placeholder="Inserisci il link da salvare"
+          placeholder="Inserisci i tag"
           value={value}
           onChange={e => setValue(e.target.value)}
+          onKeyDown={enterAddTag}
         />
+        {errorMessage && (
+          <ErrorMessageStyled>{errorMessage}</ErrorMessageStyled>
+        )}
+
         {value.length > 0 && (
-          <InnerIcon onClick={addTag} onKeyDown={enterAddTag}>
-            <FontAwesomeIcon icon={faArrowRight} color="green" size="2x" />
+          <InnerIcon onClick={addTag}>
+            <FontAwesomeIcon icon={faPlusCircle} color="green" size="2x" />
           </InnerIcon>
         )}
       </ContainerInput>
-      {tags && (
+      {tags.length > 0 && (
         <ContainerTags>
           {tags.map(tag => (
-            <div>{tag}</div>
+            <Tag removeTag={deleteTag} key={tag} tag={tag} />
           ))}
         </ContainerTags>
       )}
@@ -47,17 +67,23 @@ const InputTags: React.FC = () => {
 
 export default InputTags;
 
+const ErrorMessageStyled = styled(ErrorMessage)`
+  padding-top: 5px;
+`;
+
 const Container = styled.div`
-  margin-top: 20px;
+  margin: 20px 0px;
+  min-height: 110px;
 `;
 
 const ContainerTags = styled.div`
   margin-top: 20px;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 `;
 
 const ContainerInput = styled.div`
-  border-radius: 8px;
   overflow: hidden;
   max-width: 40%;
   position: relative;
@@ -68,6 +94,11 @@ const InputStyled = styled.input`
   padding-right: 45px;
   box-sizing: border-box;
   width: 100%;
+  border-radius: 8px;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 const InnerIcon = styled.div`

@@ -43,7 +43,7 @@ export default Profile;
 const Container = styled.div`
   padding: 10px;
   border-radius: 4px;
-  border: 1px solid ${props => props.theme.colors.borders};
+  border: 1px solid ${props => props.theme.colors.borders.grey};
   display: flex;
   flex-direction: row;
   align-content: center;

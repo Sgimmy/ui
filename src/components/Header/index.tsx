@@ -38,6 +38,10 @@ const Container = styled.div`
   align-content: center;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 20px;
+  padding: 20px 0;
   border-bottom: 1px solid ${props => props.theme.colors.borders.white};
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  background: ${props => props.theme.colors.background.black};
 `;

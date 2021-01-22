@@ -12,7 +12,7 @@ export const getArticleList = createAsyncThunk(
 
     const json: Article[] = await response.json();
 
-    const transformJson: Article[] = json.map(article => ({
+    let transformJson: Article[] = json.map(article => ({
       title: article.title,
       id: article.id,
       description: replaceNull(article.description),
@@ -22,6 +22,10 @@ export const getArticleList = createAsyncThunk(
       created: article.created,
       updated: article.updated,
     }));
+
+    transformJson = transformJson.sort((a, b) =>
+      a.created < b.created ? 1 : b.created < a.created ? -1 : 0
+    );
 
     return transformJson;
   }

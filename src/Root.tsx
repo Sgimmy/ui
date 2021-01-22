@@ -7,8 +7,12 @@ import { RouteLink } from './constants/route';
 import ArticleDetailView from './view/ArticleDetailView';
 import './reset.css';
 import NewArticleView from './view/NewArticleView';
+import PopupMessage from './components/ui/popupMessage';
+import { usePopupMessage } from './components/hooks/usePopupMessage';
 
 const Root: React.FC = () => {
+  const { popupMessageStore } = usePopupMessage();
+
   return (
     <Container>
       <Header />
@@ -19,6 +23,9 @@ const Root: React.FC = () => {
         exact
       />
       <Route path={RouteLink.newArticle} component={NewArticleView} exact />
+      {popupMessageStore.visible && (
+        <PopupMessage text={popupMessageStore.message} />
+      )}
     </Container>
   );
 };
@@ -26,9 +33,8 @@ const Root: React.FC = () => {
 export default Root;
 
 const Container = styled.div`
-  padding: 20px;
+  padding: 0px 20px 20px;
   background-color: ${props => props.theme.colors.background.black};
   color: ${props => props.theme.colors.text.white};
   font-family: ${props => props.theme.fontFamily};
-  height: calc(100vh - 40px);
 `;

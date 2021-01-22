@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import ArticleListItems from '../components/articleList/articleListItems';
 import Filters from '../components/articleList/filters';
-import { useGetArticleList } from '../components/hooks/getArticleList';
+import { useGetArticleList } from '../components/hooks/useGetArticleList';
 import { getArticleList } from '../api/getArticleList';
 import { useDispatch } from 'react-redux';
 import { clearStoreArticleDetailAction } from '../store/actions/articleDetail.action';

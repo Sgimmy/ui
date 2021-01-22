@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getArticle } from '../api/getArticle';
-import { useGetArticle } from '../components/hooks/getArticle';
+import { useGetArticle } from '../components/hooks/useGetArticle';
 import { Loader } from '../components/ui/Loader';
 
 interface TParams {

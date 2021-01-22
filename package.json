@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/http-proxy": "^1.17.4",
+    "@hookform/resolvers": "^1.3.2",
     "axios": "^0.21.1",
     "eslint": "^6.6.0",
     "eslint-config-prettier": "^6.11.0",
@@ -19,12 +19,13 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.2.0",
-    "typescript": "~3.7.2"
+    "typescript": "~3.7.2",
+    "yup": "^0.31.1"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
-    "@fortawesome/react-fontawesome": "^0.1.14",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "@reduxjs/toolkit": "^1.4.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -38,6 +39,8 @@
     "@types/styled-components": "^5.1.3",
     "@typescript-eslint/eslint-plugin": "^4.1.0",
     "@typescript-eslint/parser": "^4.1.0",
+    "@types/http-proxy": "^1.17.4",
+    "@types/yup": "^0.29.11",
     "husky": "^4.3.0",
     "redux-devtools-extension": "^2.13.8"
   },
