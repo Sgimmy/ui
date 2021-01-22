@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import ListView from './view/ListView';
 import Header from './components/Header';
 import { RouteLink } from './constants/route';
@@ -23,6 +23,9 @@ const Root: React.FC = () => {
         exact
       />
       <Route path={RouteLink.newArticle} component={NewArticleView} exact />
+      <Route path={RouteLink.all}>
+        <Redirect to={RouteLink.listArticle} />
+      </Route>
       {popupMessageStore.visible && (
         <PopupMessage text={popupMessageStore.message} />
       )}
