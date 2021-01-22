@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { getArticle } from '../api/getArticle';
 import { useGetArticle } from '../components/hooks/useGetArticle';
 import { Loader } from '../components/ui/Loader';
+import ViewAnimation from '../components/ui/animation/viewAnimation';
 
 interface TParams {
   id?: string;
@@ -25,11 +26,11 @@ const ArticleDetailView: React.FC<RouteComponentProps<TParams>> = ({
   }
 
   return (
-    <>
+    <ViewAnimation>
       {!!article.data?.content && (
         <div dangerouslySetInnerHTML={{ __html: article.data.content }} />
       )}
-    </>
+    </ViewAnimation>
   );
 };
 

@@ -7,11 +7,12 @@ import {
   notReadedCounterSelector,
   profileSelector,
 } from '../../store/selectors/profile.selector';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { RouteLink } from '../../constants/route';
 
 const Header: React.FC = () => {
   const history = useHistory();
+  const { pathname } = useLocation();
 
   const { name, avatar, loading } = useSelector(profileSelector);
   const notReadedCounter = useSelector(notReadedCounterSelector);
@@ -25,7 +26,9 @@ const Header: React.FC = () => {
         name={name}
         notReadedCounter={notReadedCounter}
       />
-      <AddArticle clickAddButton={openModalAddArticle} />
+      {pathname !== RouteLink.newArticle && (
+        <AddArticle clickAddButton={openModalAddArticle} />
+      )}
     </Container>
   );
 };

@@ -5,6 +5,7 @@ import { useGetArticleList } from '../components/hooks/useGetArticleList';
 import { getArticleList } from '../api/getArticleList';
 import { useDispatch } from 'react-redux';
 import { clearStoreArticleDetailAction } from '../store/actions/articleDetail.action';
+import ViewAnimation from '../components/ui/animation/viewAnimation';
 
 const ListView: React.FC = () => {
   const dispatch = useDispatch();
@@ -17,13 +18,13 @@ const ListView: React.FC = () => {
   const { articleList } = useGetArticleList();
 
   return (
-    <>
+    <ViewAnimation>
       <Filters action={console.log} options={['pippo', 'pluto']} />
       <ArticleListItems
         articlesList={articleList.data}
         loading={articleList.loading}
       />
-    </>
+    </ViewAnimation>
   );
 };
 
