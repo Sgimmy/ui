@@ -1,6 +1,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { CallApiResponseSendArticle, SendArticle } from '../constants/types';
 import axios from 'axios';
+import { clearStateReduxSendArticleAction } from '../store/actions/sendFormAddArticle.action';
+
+const initialState: SendArticleState = {
+  loading: false,
+  error: undefined,
+  data: undefined,
+  clearForm: undefined,
+  sending: undefined,
+};
 
 export type SendArticleState = CallApiResponseSendArticle<
   SendArticle | undefined
@@ -9,7 +18,11 @@ export type SendArticleState = CallApiResponseSendArticle<
 export const sendArticle = createAsyncThunk(
   'article/sendArticle',
   async (article: SendArticle) => {
-    const response = await axios.post('http://localhost:5001/article', article);
+    const uid = localStorage.getItem('uid');
+
+    const request = { ...article, uid: uid };
+
+    const response = await axios.post('http://localhost:5001/article', request);
     if (!response.data) throw Error(response.statusText);
 
     return response.data;
@@ -18,12 +31,7 @@ export const sendArticle = createAsyncThunk(
 
 export const sendArticleSlice = createSlice({
   name: 'sendArticle',
-  initialState: {
-    loading: false,
-    error: undefined,
-    data: undefined,
-    clearForm: undefined,
-  } as SendArticleState,
+  initialState: initialState,
   reducers: {},
   extraReducers: {
     [sendArticle.pending.type]: state => {
@@ -31,6 +39,7 @@ export const sendArticleSlice = createSlice({
         ...state,
         loading: true,
         clearForm: undefined,
+        sending: false,
       };
     },
     [sendArticle.rejected.type]: (state, action) => {
@@ -39,14 +48,21 @@ export const sendArticleSlice = createSlice({
         error: action.payload,
         loading: false,
         clearForm: undefined,
+        sending: false,
       };
     },
     [sendArticle.fulfilled.type]: state => {
       return {
         ...state,
+        sending: true,
         loading: false,
         data: undefined,
         clearForm: true,
+      };
+    },
+    [clearStateReduxSendArticleAction.type]: () => {
+      return {
+        ...initialState,
       };
     },
   },

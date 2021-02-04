@@ -38,7 +38,8 @@ const InputTags: React.FC<TagsProps> = ({
   return (
     <Container>
       <ContainerInput>
-        <InputStyled
+        <input
+          className="genericInput"
           placeholder="Inserisci i tag"
           value={value}
           onChange={e => setValue(e.target.value)}
@@ -49,9 +50,9 @@ const InputTags: React.FC<TagsProps> = ({
         )}
 
         {value.length > 0 && (
-          <InnerIcon onClick={addTag}>
+          <div className="genericInputIcon" onClick={addTag}>
             <FontAwesomeIcon icon={faPlusCircle} color="green" size="2x" />
-          </InnerIcon>
+          </div>
         )}
       </ContainerInput>
       {tags.length > 0 && (
@@ -87,25 +88,4 @@ const ContainerInput = styled.div`
   overflow: hidden;
   max-width: 40%;
   position: relative;
-`;
-
-const InputStyled = styled.input`
-  padding: 15px;
-  padding-right: 45px;
-  box-sizing: border-box;
-  width: 100%;
-  border-radius: 8px;
-
-  &:focus {
-    outline: none;
-  }
-`;
-
-const InnerIcon = styled.div`
-  position: absolute;
-  text-align: center;
-  width: 32px;
-  top: 8px;
-  right: 8px;
-  cursor: pointer;
 `;

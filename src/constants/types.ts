@@ -7,6 +7,12 @@ export interface Article {
   source: string;
   created: string;
   updated: string;
+  tags: string[];
+}
+
+export interface Tags {
+  tags: string[];
+  selectedTag: string;
 }
 
 export interface CallApiResponse<T> {
@@ -17,6 +23,7 @@ export interface CallApiResponse<T> {
 
 export interface CallApiResponseSendArticle<T> extends CallApiResponse<T> {
   clearForm?: boolean;
+  sending?: boolean;
 }
 
 export interface SendArticle {

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Article } from '../../../constants/types';
 import placeHolder from '../../../assets/img/img-placeholder.png';
 import { H2, P } from '../../ui/Typography';
+import { motion } from 'framer-motion';
 
 interface ListItem {
   article: Article;
@@ -13,7 +14,7 @@ const ArticleListItem: React.FC<ListItem> = ({ article, tags }) => {
   const navigateToArticle = () => window.open(article.source, '_blank');
 
   return (
-    <Container>
+    <Container whileHover={{ scale: 1.1 }}>
       <ArticleContent onClick={navigateToArticle}>
         <ImageContainer>
           <Image src={article.thumbnail ?? placeHolder} alt="image" />
@@ -40,7 +41,7 @@ const ArticleListItem: React.FC<ListItem> = ({ article, tags }) => {
 
 export default ArticleListItem;
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -50,7 +51,6 @@ const Container = styled.div`
 
 const ArticleContent = styled.article`
   border-radius: 4px;
-  width: 100%;
   box-sizing: border-box;
   padding: 20px;
   border: 1px solid ${props => props.theme.colors.borders.grey};
@@ -58,6 +58,7 @@ const ArticleContent = styled.article`
   align-items: center;
   margin-bottom: 20px;
   cursor: pointer;
+  width: 80%;
 `;
 
 const ImageContainer = styled.div`

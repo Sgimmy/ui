@@ -8,14 +8,11 @@ import { SendArticleType } from '../../constants/enum';
 import { schema } from './index.schema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useSendArticle } from '../hooks/useSendArticle';
-import { usePopupMessage } from '../hooks/usePopupMessage';
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 
 const FormAddUrl: React.FC = () => {
   const { sendArticleAction, loading, clearForm } = useSendArticle();
-
-  const { showPopup } = usePopupMessage();
 
   const {
     register,
@@ -43,7 +40,6 @@ const FormAddUrl: React.FC = () => {
   useEffect(() => {
     if (clearForm) {
       reset();
-      showPopup('Link inviato con successo');
     }
   }, [clearForm]);
 

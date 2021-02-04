@@ -22,6 +22,7 @@ export const getArticle = createAsyncThunk(
       source: json.source,
       created: json.created,
       updated: json.updated,
+      tags: [],
     };
 
     return transformJson;

@@ -7,27 +7,46 @@ interface PrimaryButtonProps {
   onClick: () => void;
   text: string;
   loading?: boolean;
+  disabled?: boolean;
+  className?: string;
 }
 
 const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   onClick,
   text,
   loading,
+  disabled,
+  className,
 }) => {
   return (
-    <Container onClick={onClick}>
+    <Button
+      onClick={disabled ? undefined : onClick}
+      disabled={disabled}
+      className={className}
+    >
       {loading ? (
         <FontAwesomeIcon icon={faSpinner} pulse color="white" />
       ) : (
         text
       )}
-    </Container>
+    </Button>
   );
 };
 
-const Container = styled.div`
+interface ButtonProps {
+  disabled?: boolean;
+}
+
+const Button = styled.div<ButtonProps>`
+  color: ${props =>
+    props.disabled
+      ? props.theme.colors.text.grey
+      : props.theme.colors.button.white};
   padding: 5px 10px;
-  background: ${props => props.theme.colors.button.primary};
+  background: ${props =>
+    props.disabled
+      ? props.theme.colors.button.disabled
+      : props.theme.colors.button.primary};
   border-radius: 5px;
   display: flex;
   justify-content: center;

@@ -21,15 +21,16 @@ const Input: React.FC<InputProps> = ({
 }) => {
   return (
     <Container>
-      <InputStyled
+      <input
+        className="genericInput"
         placeholder={placeholder}
         value={value}
         onChange={e => setValue(e.target.value)}
       />
       {value.length > 0 && (
-        <InnerIcon onClick={clear}>
+        <div className="genericInputIcon" onClick={clear}>
           <FontAwesomeIcon icon={faTimes} color="red" size={'2x'} />
-        </InnerIcon>
+        </div>
       )}
       {errorMessage && <ErrorMessageStyled>{errorMessage}</ErrorMessageStyled>}
     </Container>
@@ -42,27 +43,6 @@ const Container = styled.div`
   margin-top: 20px;
   overflow: hidden;
   position: relative;
-`;
-
-const InputStyled = styled.input`
-  padding: 15px;
-  padding-right: 45px;
-  box-sizing: border-box;
-  width: 100%;
-  border-radius: 8px;
-
-  &:focus {
-    outline: none;
-  }
-`;
-
-const InnerIcon = styled.div`
-  position: absolute;
-  text-align: center;
-  width: 32px;
-  top: 8px;
-  right: 8px;
-  cursor: pointer;
 `;
 
 const ErrorMessageStyled = styled(ErrorMessage)`

@@ -2,6 +2,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { SendArticle } from '../../constants/types';
 import { sendArticle } from '../../api/sendArticle';
 import { sendArticleSelector } from '../../store/selectors/sendArticle.selector';
+import { clearStateReduxSendArticleAction } from '../../store/actions/sendFormAddArticle.action';
+import { useEffect } from 'react';
+import { usePopupMessage } from './usePopupMessage';
 
 export const useSendArticle: () => {
   sendArticleAction: (article: SendArticle) => void;
@@ -10,6 +13,8 @@ export const useSendArticle: () => {
 } = () => {
   const dispatch = useDispatch();
 
+  const { showPopup } = usePopupMessage();
+
   const sendArticleStore = useSelector(sendArticleSelector);
 
   const sendArticleAction = (article: SendArticle) =>
@@ -17,11 +22,19 @@ export const useSendArticle: () => {
 
   const loading = sendArticleStore.loading;
 
-  const clearForm = sendArticleStore.clearForm;
+  useEffect(() => {
+    if (sendArticleStore.clearForm) {
+      dispatch(clearStateReduxSendArticleAction());
+      showPopup('Link inviato con successo');
+    }
+    if (sendArticleStore.error) {
+      showPopup("C'è stato un errore imprevisto");
+    }
+  }, [sendArticleStore]);
 
   return {
     sendArticleAction,
     loading,
-    clearForm,
+    clearForm: sendArticleStore.clearForm,
   };
 };

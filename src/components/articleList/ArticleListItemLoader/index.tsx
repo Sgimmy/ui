@@ -12,6 +12,7 @@ const ArticleListItemLoader: React.FC = () => {
 export default ArticleListItemLoader;
 
 const Container = styled.div`
+  margin-top: 20px;
   border-radius: 4px;
   width: 100%;
   box-sizing: border-box;

@@ -6,25 +6,33 @@ import { getArticleList } from '../api/getArticleList';
 import { useDispatch } from 'react-redux';
 import { clearStoreArticleDetailAction } from '../store/actions/articleDetail.action';
 import ViewAnimation from '../components/ui/animation/ViewAnimation';
+import Header from '../components/Header';
+import { getTags } from '../api/getTags';
+import { useTags } from '../components/hooks/useTags';
 
 const ListView: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getArticleList());
+    dispatch(getTags());
     dispatch(clearStoreArticleDetailAction());
-  }, [dispatch]);
+  }, []);
 
   const { articleList } = useGetArticleList();
+  const { tags, selectedTags } = useTags();
 
   return (
-    <ViewAnimation>
-      <Filters action={console.log} options={['pippo', 'pluto']} />
-      <ArticleListItems
-        articlesList={articleList.data}
-        loading={articleList.loading}
-      />
-    </ViewAnimation>
+    <React.Fragment>
+      <Header />
+      <ViewAnimation>
+        <Filters action={selectedTags} options={tags} />
+        <ArticleListItems
+          articlesList={articleList.data}
+          loading={articleList.loading}
+        />
+      </ViewAnimation>
+    </React.Fragment>
   );
 };
 

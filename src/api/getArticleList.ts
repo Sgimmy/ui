@@ -7,7 +7,8 @@ export type GetArticleListState = CallApiResponse<Article[]>;
 export const getArticleList = createAsyncThunk(
   'articles/getArticles',
   async () => {
-    const response = await fetch('http://localhost:5001/article');
+    const uid = localStorage.getItem('uid');
+    const response = await fetch(`http://localhost:5001/article/${uid}`);
     if (!response.ok) throw Error(response.statusText);
 
     const json: Article[] = await response.json();
@@ -18,6 +19,7 @@ export const getArticleList = createAsyncThunk(
       description: replaceNull(article.description),
       content: article.content,
       thumbnail: replaceNull(article.thumbnail),
+      tags: article.tags,
       source: article.source,
       created: article.created,
       updated: article.updated,

@@ -7,7 +7,13 @@ export enum Actions {
   showPopupMessage = 'SHOW_POPUP_MESSAGE',
   hidePopupMessage = 'HIDE_POPUP_MESSAGE',
 
-  changeFormAddArticle = 'CHANGE_FORM_ADD_ARTICLE',
+  //login
+  pressedLogin = 'PRESSED_LOGIN',
+  userAuthenticated = 'USER_AUTHENTICATED',
+  userNotAuthenticated = 'USER_NOT_AUTHENTICATED',
+
+  clearStateReduxSendArticle = 'CLEAR_STATE_REDUX_SEND_ARTICLE',
+  selectedTag = 'SELECTED_TAG',
 
   storeProfile = 'STORE_PROFILE',
   storeProfileFailed = 'STORE_PROFILE_FAILED',

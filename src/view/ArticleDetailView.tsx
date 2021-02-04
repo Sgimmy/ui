@@ -19,6 +19,7 @@ const ArticleDetailView: React.FC<RouteComponentProps<TParams>> = ({
   useEffect(() => {
     if (id) dispatch(getArticle(id));
   }, [id]);
+
   const { article } = useGetArticle();
 
   if (article.loading) {

@@ -15,8 +15,8 @@ const Filters: React.FC<FiltersProps> = ({ action, options }) => {
   return (
     <Container>
       <Select onChange={onChangeAction}>
-        <option value="all">Tutte le categorie</option>
-        {options.map(option => {
+        <option value="">Tutte le categorie</option>
+        {options?.map(option => {
           return (
             <option key={option} value={option}>
               {firstLetterUpperCase(option)}

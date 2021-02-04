@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ArticleListItem from '../articleListItem';
 import { Article } from '../../../constants/types';
 import ArticleListItemLoader from '../ArticleListItemLoader';
+import LazyLoad from 'react-lazyload';
 import { P } from '../../ui/Typography';
 
 interface ArticleList {
@@ -12,18 +13,24 @@ interface ArticleList {
 
 const ArticleListItems: React.FC<ArticleList> = ({ articlesList, loading }) => {
   if (articlesList.length <= 0 && loading) {
-    return (
-      <Container>
-        <ArticleListItemLoader />
-      </Container>
-    );
+    return <ArticleListItemLoader />;
   }
 
   return (
     <Container>
-      {articlesList ? (
+      {articlesList.length > 0 ? (
         articlesList.map(article => (
-          <ArticleListItem article={article} tags={['prova1', 'prova2']} />
+          <LazyLoad
+            key={article.id}
+            placeholder={<ArticleListItemLoader />}
+            offset={120}
+          >
+            <ArticleListItem
+              key={article.id}
+              article={article}
+              tags={article.tags}
+            />
+          </LazyLoad>
         ))
       ) : (
         <P>Lista vuota</P>

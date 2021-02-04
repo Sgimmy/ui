@@ -7,16 +7,16 @@ import {
   notReadedCounterSelector,
   profileSelector,
 } from '../../store/selectors/profile.selector';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { RouteLink } from '../../constants/route';
+import { useNavigation } from '../hooks/useNavigation';
 
 const Header: React.FC = () => {
-  const history = useHistory();
   const { pathname } = useLocation();
 
   const { name, avatar, loading } = useSelector(profileSelector);
   const notReadedCounter = useSelector(notReadedCounterSelector);
-  const openModalAddArticle = () => history.push(RouteLink.newArticle);
+  const { goBack, goToAddArticle } = useNavigation();
 
   return (
     <Container>
@@ -26,9 +26,12 @@ const Header: React.FC = () => {
         name={name}
         notReadedCounter={notReadedCounter}
       />
-      {pathname !== RouteLink.newArticle && (
-        <AddArticle clickAddButton={openModalAddArticle} />
-      )}
+      <AddArticle
+        clickButton={
+          pathname === RouteLink.newArticle ? goBack : goToAddArticle
+        }
+        back={pathname === RouteLink.newArticle}
+      />
     </Container>
   );
 };
@@ -47,4 +50,5 @@ const Container = styled.div`
   position: sticky;
   top: 0;
   background: ${props => props.theme.colors.background.black};
+  z-index: 100;
 `;
